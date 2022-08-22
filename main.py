@@ -29,12 +29,10 @@ class Rigister:
         conn.commit()
 
     def getById(self, id):
-        junatish = f'''
+        cursor.execute(f'''
             select * from datas
             where id = '{id}'
-        '''
-        cursor.execute(junatish)
-
+        ''')
     def signIN(self, login, parol):
         pass
     
@@ -76,3 +74,6 @@ for i in lst:
     i.rigister()
 
 print(Rigister.returnLoginPassword("Cantu", "^wmUF&pkk7"))
+
+
+
