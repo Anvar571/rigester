@@ -1,0 +1,17 @@
+-- data base created
+create user data with password '1';
+
+-- create database 
+create database data
+
+-- create role 
+alter role user with createdb superuser;
+
+-- connect database 
+\c databasename -- connect database
+
+-- shuw users
+select current_user;
+
+-- show database;
+\l
