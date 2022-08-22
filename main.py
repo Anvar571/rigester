@@ -33,7 +33,6 @@ class Rigister:
             select * from datas
             where id = '{id}'
         ''')
-
     def signIN(self, login, parol):
         pass
     
@@ -75,3 +74,6 @@ for i in lst:
     i.rigister()
 
 print(Rigister.returnLoginPassword("Cantu", "^wmUF&pkk7"))
+
+
+
