@@ -1,21 +1,28 @@
 import psycopg2
+from faker import Faker
+fake = Faker()
 
 conn = psycopg2.connect(
     host="localhost",
-    database="data",
-    user="data",
+    database="datas",
+    user="datas",
     password="1"
 )
 
 cursor = conn.cursor()
 
 class Rigister:
-    def __init__(self, name, lName, age, job, parol):
-        self.name = name
-        self.age = age
-        self.lName = lName
-        self.job = job
+    def __init__(self, Ulogin, Fname,lname, parol, age, job):
+        self.Ulogin = Ulogin
+        self.Fname = Fname
+        self.lName = lname
         self.parol = parol
+        self.age = age
+        self.job = job
+    def writeDatabase(self):
+        query = f'''
+            insert into datas(Ulogin, Fname,lname, parol, age, job)values
+        '''
     def rister(self):
         pass
     def showData(self):

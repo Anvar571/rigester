@@ -1,4 +1,4 @@
--- data base created
+-- create user
 create user data with password '1';
 
 -- create database 
@@ -15,3 +15,9 @@ select current_user;
 
 -- show database;
 \l
+
+-- delete user
+drop user userName
+
+-- delete database;
+drop database databasename
