@@ -37,6 +37,7 @@ class Rigister:
 
     def signIN(self, login, parol):
         pass
+    
     def returnLoginPassword(self, Ulogin, parol):
         query = f'''
             select Ulogin, parol from datas where Ulogin='{Ulogin}' and parol = '{parol}' 
