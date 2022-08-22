@@ -36,10 +36,8 @@ class Rigister:
         cursor.execute(junatish)
 
     def signIN(self, login, parol):
-        res = self.returnLoginPassword()
-        if login != res[0]:
-            print("Parol xato")
-
+        pass
+    
     def returnLoginPassword(self, Ulogin, parol):
         query = f'''
             select Ulogin, parol from datas where Ulogin='{Ulogin}' and parol = '{parol}' 
