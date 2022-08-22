@@ -21,3 +21,5 @@ class Rigister:
         pass
     def updeteLoginANDParol(self):
         pass
+
+    print("HEllo")
