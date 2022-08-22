@@ -1,3 +1,14 @@
+import psycopg2
+
+conn = psycopg2.connect(
+    host="localhost",
+    database="data",
+    user="data",
+    password="1"
+)
+
+cursor = conn.cursor()
+
 class Rigister:
     def __init__(self, name, lName, age, job, parol):
         self.name = name
@@ -22,4 +33,4 @@ class Rigister:
     def updeteLoginANDParol(self):
         pass
 
-    print("HEllo")
+print("HEllo")
