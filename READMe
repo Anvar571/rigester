@@ -22,3 +22,6 @@ drop user userName
 
 -- delete database;
 drop database databasename
+
+-- git conflig berishi
+<h1>Git bilan ishlayotganda</h1>
