@@ -29,11 +29,11 @@ class Rigister:
         conn.commit()
 
     def getById(self, id):
-        query = f'''
+        junatish = f'''
             select * from datas
             where id = '{id}'
         '''
-        cursor.execute(query)
+        cursor.execute(junatish)
 
     def signIN(self, login, parol):
         res = self.returnLoginPassword()
