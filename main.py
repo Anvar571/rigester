@@ -20,7 +20,7 @@ class Rigister:
         self.parol = parol
         self.age = age
         self.job = job
-    def writeDatabase(self):
+    def rigister(self):
         query = f'''
             insert into datas(Ulogin, Fname,lname, parol, age, job)values
             ('{self.Ulogin}', '{self.Fname}', '{self.lName}', '{self.parol}', '{self.age}', '{self.job}')
@@ -28,22 +28,32 @@ class Rigister:
         cursor.execute(query)
         conn.commit()
 
-    def rister(self):
-        pass
-    def showData(self):
-        pass
+    def getById(self, id):
+        query = f'''
+            select * from datas
+            where id = '{id}'
+        '''
+        cursor.execute(query)
+
     def signIN(self):
-        pass
-    def getById(self):
         pass
     def checkLoginAndCHeckParol(self):
         pass
-    def changePassword(self):
-        pass
-    def deleteLogin(self):
-        pass
-    def updeteLoginANDParol(self):
-        pass
+    def changePassword(self, id, parol):
+        query = f'''
+            updete from dates set parol = '{parol}'
+            where id = '{id}'
+        '''
+        cursor.execute(query)
+        conn.commit()
+
+    def deleteLogin(self, id):
+        query = f'''
+            delete from datas where id = '{id}'
+        '''
+        cursor.execute(query)
+        conn.commit()
+
     def generetePassword():
         login = "adqvqjcQWCEQCLKLh23874ddcasSDFSDtv232$Q$3487238v2y39rbjd7f826!&#@^!T#*T!@(798yv2"
         s = ""
@@ -56,4 +66,4 @@ for i in range(10):
     lst.append(user)
 
 for i in lst:
-    i.writeDatabase()
+    i.rigister()

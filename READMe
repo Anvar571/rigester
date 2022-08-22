@@ -1,4 +1,5 @@
 -- create user
+-- birinchi bo'lib 
 create user data with password '1';
 
 -- create database 
@@ -10,11 +11,11 @@ alter role user with createdb superuser;
 -- connect database 
 \c databasename -- connect database
 
--- shuw users
+-- shuw users userlarni ko'rish kamandasi
 select current_user;
 
 -- show database;
-\l
+\l -- databaselarni ko'rish kamandasi
 
 -- delete user
 drop user userName
