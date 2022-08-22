@@ -36,10 +36,7 @@ class Rigister:
         cursor.execute(query)
 
     def signIN(self, login, parol):
-        if login == self.returnLoginPassword()[0] {
-            print("O'tdingiz")
-        }
-
+        pass
     def returnLoginPassword(self, Ulogin, parol):
         query = f'''
             select Ulogin, parol from datas where Ulogin='{Ulogin}' and parol = '{parol}' 
