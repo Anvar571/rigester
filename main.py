@@ -36,9 +36,9 @@ class Rigister:
         cursor.execute(query)
 
     def signIN(self, login, parol):
-        if login == self.returnLoginPassword()[0] {
-            print("O'tdingiz")
-        }
+        res = self.returnLoginPassword()
+        if login != res[0]:
+            print("Parol xato")
 
     def returnLoginPassword(self, Ulogin, parol):
         query = f'''
