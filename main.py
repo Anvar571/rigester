@@ -35,10 +35,18 @@ class Rigister:
         '''
         cursor.execute(query)
 
-    def signIN(self):
-        pass
-    def checkLoginAndCHeckParol(self):
-        pass
+    def signIN(self, login, parol):
+        if login == self.returnLoginPassword()[0] {
+            print("O'tdingiz")
+        }
+
+    def returnLoginPassword(self, Ulogin, parol):
+        query = f'''
+            select Ulogin, parol from datas where Ulogin='{Ulogin}' and parol = '{parol}' 
+        '''
+        cursor.execute(query)
+        return cursor.fetchall()[0]
+
     def changePassword(self, id, parol):
         query = f'''
             updete from dates set parol = '{parol}'
@@ -60,6 +68,7 @@ class Rigister:
         for i in range(8):
             s += login[r.randint(i, len(login)-1)]
         return s
+
 lst = []
 for i in range(10):
     user = Rigister(fake.name().split()[1], fake.name().split()[0], fake.name().split()[1], fake.password(), r.randint(10, 80), fake.job())
@@ -67,3 +76,5 @@ for i in range(10):
 
 for i in lst:
     i.rigister()
+
+print(Rigister.returnLoginPassword("Cantu", "^wmUF&pkk7"))
