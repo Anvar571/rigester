@@ -12,7 +12,7 @@ conn = psycopg2.connect(
 
 cursor = conn.cursor()
 
-class Rigister:
+class Users:
     def __init__(self, Ulogin, Fname,lname, parol, age, job):
         self.Ulogin = Ulogin
         self.Fname = Fname
@@ -20,30 +20,37 @@ class Rigister:
         self.parol = parol
         self.age = age
         self.job = job
-    def rigister(self):
+    def str(self):
+        return (self.Ulogin, self.Fname, self.lName, self.parol,self.age,self.job)
+
+class Rigister:
+    
+    def rigister(Ulogin, Fname,lname, parol, age, job):
         query = f'''
             insert into datas(Ulogin, Fname,lname, parol, age, job)values
-            ('{self.Ulogin}', '{self.Fname}', '{self.lName}', '{self.parol}', '{self.age}', '{self.job}')
+            ('{Ulogin}', '{Fname}', '{lname}', '{parol}', '{age}', '{job}')
         '''
         cursor.execute(query)
         conn.commit()
 
-    def getById(self, id):
+    def getById(login):
         cursor.execute(f'''
             select * from datas
-            where id = '{id}'
+            where Ulogin = '{login}'
         ''')
-    def signIN(self, login, parol):
-        pass
+        return cursor.fetchall()
     
-    def returnLoginPassword(self, Ulogin, parol):
+    def SignIN(Ulogin, parol):
         query = f'''
             select Ulogin, parol from datas where Ulogin='{Ulogin}' and parol = '{parol}' 
         '''
         cursor.execute(query)
-        return cursor.fetchall()[0]
+        if len(cursor.fetchall()) < 1:
+            return "Tizimga kirmadingiz"
+        else:
+            return "Tizimga kirdingiz"
 
-    def changePassword(self, id, parol):
+    def changePassword(id, parol):
         query = f'''
             updete from dates set parol = '{parol}'
             where id = '{id}'
@@ -51,9 +58,14 @@ class Rigister:
         cursor.execute(query)
         conn.commit()
 
-    def deleteLogin(self, id):
+    def updataData(login, column, newData):
+        cursor.execute(f'''
+            update datas set {column} = '{newData}' where Ulogin = '{login}'
+        ''')
+
+    def deleteLogin(login):
         query = f'''
-            delete from datas where id = '{id}'
+            delete from datas where Ulogin  = '{login}'
         '''
         cursor.execute(query)
         conn.commit()
@@ -64,16 +76,40 @@ class Rigister:
         for i in range(8):
             s += login[r.randint(i, len(login)-1)]
         return s
-
-lst = []
-for i in range(10):
-    user = Rigister(fake.name().split()[1], fake.name().split()[0], fake.name().split()[1], fake.password(), r.randint(10, 80), fake.job())
-    lst.append(user)
-
-for i in lst:
-    i.rigister()
-
-print(Rigister.returnLoginPassword("Cantu", "^wmUF&pkk7"))
+    def showFullData():
+        cursor.execute(f'''
+            select * from datas
+        ''')
+        return cursor.fetchall()
 
 
+while True:
+    print("[1]RO'YXATDAN O'TISH\n[2]SHOWDATA\n[3]UPDATE\n[4]SIGNIN\n[5]DELETEUSER\n[6]ShOWFULLDATA")
+    son = int(input("Tanlang: "))
+    if son > 6:
+        print("Xato son kiritdingiz: \n")
+    elif son == 1:
+        user = Users(input("Enput login: "), input("First name: "), input("input last name: "), input("Input parol: "), input("Enter age: "), input("Enter job: "))
+        Rigister.rigister(user.str()[0], user.str()[1],user.str()[2],user.str()[3],user.str()[4],user.str()[5])
+    elif son == 2:
+        id = input("Enter login: ")
+        if len(Rigister.getById(id)) < 1:
+            print("Bunqa user yuq")
+        else:
+            print(Rigister.getById(id))
+    elif son == 3:
+        login = input("Qaysi userning malumotini o'zgartirmoqchisiz: ")
+        column = input("Nimani o'zgartirmoqchisiz: ")
+        newData = input("Enter newData: ")
+        Rigister.updataData(login, column, newData)
 
+    elif son == 4:
+        Rigister.SignIN(input("Login kiriting: "), input("Parolni kiriting: "))
+    elif son == 5:
+        login = input("Enter login: ")
+        Rigister.deleteLogin(login)
+    elif son == 6:
+        res = Rigister.showFullData()
+        for i in res:
+            print(i)
+        print()
