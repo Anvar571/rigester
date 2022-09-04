@@ -1,28 +1,28 @@
 ### Python orqali user registratsiya PostgreSQL bilan
 -- create user
 -- birinchi bo'lib 
-create user data with password '1';
+<h5>create user data with password '1';<h5>
 
 -- create database 
-create database data
+<h5>create database data</h5>
 
 -- create role 
-alter role user with createdb superuser;
+<h5>alter role user with createdb superuser;</h5>
 
 -- connect database 
-\c databasename -- connect database
+<h5>\c databasename -- connect database</h5>
 
 -- shuw users userlarni ko'rish kamandasi
-select current_user;
+<h5>select current_user;</h5>
 
 -- show database;
-\l -- databaselarni ko'rish kamandasi
+<h5>\l -- databaselarni ko'rish kamandasi</h5>
 
 -- delete user
-drop user userName
+<h5>drop user userName</h5>
 
 -- delete database;
-drop database databasename
+<h5>drop database databasename</h5>
 
 -- git conflig berishi
 <h1>Git bilan ishlayotganda</h1>
